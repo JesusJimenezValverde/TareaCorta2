@@ -25,6 +25,8 @@ int main() {
 	la.push_back("juan");
 	la.print();
 	std::cout << "\n";
+
+	system("pause");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

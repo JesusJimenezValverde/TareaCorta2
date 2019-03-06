@@ -113,7 +113,12 @@ bool List<T>::remove(int pos, T & x)
 template<class T>
 bool List<T>::pop(T & x)
 {
-	return false;
+	link aux = primero;
+	x = primero->elemento;
+	primero = primero->siguiente;
+	delete aux;
+	tam--;
+	return True;
 }
 
 template<class T>
