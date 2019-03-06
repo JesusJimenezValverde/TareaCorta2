@@ -124,7 +124,17 @@ bool List<T>::pop(T & x)
 template<class T>
 bool List<T>::pop_back(T & x)
 {
-	return false;
+	link aux = primero;
+	while (aux) {
+		if aux->siguiente == NULL{
+			x = aux->elemento;
+		delete aux;
+		}
+		aux = aux->siguiente;
+		tam--;
+		return True
+	}
+	//return false;
 }
 
 template<class T>
