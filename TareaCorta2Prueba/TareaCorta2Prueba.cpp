@@ -20,16 +20,17 @@ int main() {
 	//lm.insertarR(50, 99);
 	//lm.insertarR(999, 1);
 	lm.print();
-	lm.remove(1);
+	cout << "" << endl;
+	lm.remove(5);
 	lm.print();
-	std::cout << "\n";
+	cout << "\n";
 	List<string> la("Personas");
 	la.push_back("ana");
 	la.push_back("juan");
 	la.print();
-	std::cout << "\n";
+	cout << "\n";
 
-	system("pause");
+	//system("pause");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

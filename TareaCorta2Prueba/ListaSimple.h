@@ -1,8 +1,11 @@
 #pragma once
 #include <iostream>
 #include <string>
-using std::string;
-using std::cout;
+//using std::string;
+//using std::cout;
+
+using namespace std;
+
 template <class T>
 class List {
 private:
@@ -105,31 +108,44 @@ void List<T>::insertarR(T x, int pos) {
 }
 
 template<class T>
-bool List<T>::remove(int pos) //T & x
+bool List<T>::remove(int pos)
 {
 	if (!primero) {
-		cout << "La lista esta vacía" << endl;
+		cout << "La lista esta vacía";
 		return false;
 	}
 	else {
+		if (len() - 1 < pos) {
+			cout << "\nLa posicion a remover no existe, la lista quedara igual.\n" << endl;
+			return false;
+		}
 		if (pos == 0 && primero->siguiente == NULL) {
+			link Aeliminar = primero;
 			primero = NULL;
+			delete Aeliminar;
+			return true;
+		}
+		else if(pos == 0){
+			link Aeliminar = primero;
+			primero = primero->siguiente;
+			delete Aeliminar;
 			return true;
 		}
 		else {
 			link p = primero;
 			int actual = 0;
-			while (p->siguiente && actual < pos ) {
+			while (p->siguiente && actual+1 < pos) {
 				p = p->siguiente;
 				actual++;
 			}
 			link Aeliminar = p->siguiente;
-			if (Aeliminar->siguietne == NULL) {
+			if (Aeliminar->siguiente == NULL) {
 				p->siguiente = NULL;
 			}
 			else {
 				p->siguiente = Aeliminar->siguiente;
 			}
+			delete Aeliminar;
 			return true;
 		}
 	}
@@ -143,7 +159,7 @@ bool List<T>::pop(T & x)
 	primero = primero->siguiente;
 	delete aux;
 	tam--;
-	return True;
+	return true;
 }
 
 template<class T>
@@ -151,13 +167,13 @@ bool List<T>::pop_back(T & x)
 {
 	link aux = primero;
 	while (aux) {
-		if aux->siguiente == NULL{
+		if (aux->siguiente == NULL){
 			x = aux->elemento;
 		delete aux;
 		}
 		aux = aux->siguiente;
 		tam--;
-		return True
+		return true;
 	}
 	//return false;
 }
