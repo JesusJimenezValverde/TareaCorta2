@@ -12,12 +12,15 @@ int main() {
 	lm.push_front(30);
 	lm.push_front(20);
 	lm.push_front(10);
-	lm.push_back(40);
-	lm.insertarR(5, 0);
-	lm.insertarR(8, 1);
-	lm.insertarR(15, 5);
-	lm.insertarR(50, 99);
-	lm.insertarR(999, 1);
+	
+	//lm.push_back(40);
+	//lm.insertarR(5, 0);
+	//lm.insertarR(8, 1);
+	//lm.insertarR(15, 5);
+	//lm.insertarR(50, 99);
+	//lm.insertarR(999, 1);
+	lm.print();
+	lm.remove(1);
 	lm.print();
 	std::cout << "\n";
 	List<string> la("Personas");

@@ -30,7 +30,7 @@ public:
 	void push_back(T x);
 	void insertar(T x, int pos);
 	void insertarR(T x, int pos);
-	bool remove(int pos, T& x);
+	bool remove(int pos); //T& x
 	bool pop(T& x);
 	bool pop_back(T& x);
 	bool get(int pos, T& element);
@@ -105,9 +105,34 @@ void List<T>::insertarR(T x, int pos) {
 }
 
 template<class T>
-bool List<T>::remove(int pos, T & x)
+bool List<T>::remove(int pos) //T & x
 {
-	return false;
+	if (!primero) {
+		cout << "La lista esta vacía" << endl;
+		return false;
+	}
+	else {
+		if (pos == 0 && primero->siguiente == NULL) {
+			primero = NULL;
+			return true;
+		}
+		else {
+			link p = primero;
+			int actual = 0;
+			while (p->siguiente && actual < pos ) {
+				p = p->siguiente;
+				actual++;
+			}
+			link Aeliminar = p->siguiente;
+			if (Aeliminar->siguietne == NULL) {
+				p->siguiente = NULL;
+			}
+			else {
+				p->siguiente = Aeliminar->siguiente;
+			}
+			return true;
+		}
+	}
 }
 
 template<class T>
