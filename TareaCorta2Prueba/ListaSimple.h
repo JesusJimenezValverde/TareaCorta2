@@ -184,7 +184,23 @@ bool List<T>::pop_back(T & x)
 template<class T>
 bool List<T>::get(int pos, T & element)
 {
-	return false;
+	if (!primero || pos > len()) {
+		cout << "La lista se encuentra vacía" << endl;
+		return false;
+	}
+	else {
+		link aux = primero;
+		int cont = 0;
+		while (aux) {
+			if (cont == pos) {
+				element = aux->elemento;
+				return true;
+			}
+			cont += 1;
+			aux = aux->siguiente;
+		}
+	}
+
 }
 
 template<class T>

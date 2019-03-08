@@ -13,17 +13,25 @@ int main() {
 	lm.push_front(20);
 	lm.push_front(10);
 	
-	//lm.push_back(40);
-	//lm.insertarR(5, 0);
+	lm.push_back(40);
+	lm.insertarR(5, 0);
 	//lm.insertarR(8, 1);
 	//lm.insertarR(15, 5);
 	//lm.insertarR(50, 99);
 	//lm.insertarR(999, 1);
 	lm.print();
 	cout << "" << endl;
-	lm.remove(5);
+	
+	//************ Pruebas ***************\\
+
+	int devuelve = 0;
+	lm.get(2, devuelve);
+	cout << "El get obtuvo: " << devuelve << endl;
+	//lm.remove(0, devuelve);
 	lm.print();
 	cout << "\n";
+	
+	
 	List<string> la("Personas");
 	la.push_back("ana");
 	la.push_back("juan");
