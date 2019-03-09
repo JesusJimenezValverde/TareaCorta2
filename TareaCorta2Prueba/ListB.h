@@ -47,7 +47,7 @@ ListaB<T,N>::ListaB(string s) {
 
 template<class T, int N>
 int ListaB<T, N>::len() {
-	return 0;
+	return tam;
 }
 
 template<class T, int N>
