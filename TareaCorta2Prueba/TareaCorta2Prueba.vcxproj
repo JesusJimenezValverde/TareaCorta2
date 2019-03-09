@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ListaSimple.h" />
+    <ClInclude Include="ListB.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
