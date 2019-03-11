@@ -8,6 +8,9 @@
 int main() {
 
 	List<int> lm("Lista1");
+	ListaB<int> lp("ListaP");
+
+	lp.push_front();
 
 	lm.push_front(30);
 	lm.push_front(20);

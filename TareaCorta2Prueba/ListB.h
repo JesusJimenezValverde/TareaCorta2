@@ -42,7 +42,9 @@ public:
 
 template<class T, int N>
 ListaB<T,N>::ListaB(string s) {
-	
+	primero = NULL;
+	tam = 0;
+	nombre = s;
 }
 
 template<class T, int N>
@@ -52,7 +54,10 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
-	
+	if (primero == NULL) {
+		primero = new Node();
+		primero->elemento[0] = x;
+	}
 
 }
 
