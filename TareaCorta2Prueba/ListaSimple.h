@@ -200,7 +200,7 @@ bool List<T>::get(int pos, T & element)
 			aux = aux->siguiente;
 		}
 	}
-
+	return true;
 }
 
 template<class T>
