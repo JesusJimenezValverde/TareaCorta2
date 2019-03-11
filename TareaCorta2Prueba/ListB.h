@@ -44,7 +44,7 @@ template<class T, int N>
 ListaB<T,N>::ListaB(string s) {
 	primero = NULL;
 	tam = 0;
-	nombre = s;
+	nombreLista = s;
 }
 
 template<class T, int N>
@@ -105,7 +105,17 @@ bool ListaB<T,N>::get_back(T& element)
 	return false;
 }
 
-/* //*****************Por poner***************\\
-~ListaB();
-void print();
-*/
+template<class T, int N>
+ListaB<T,N>::~ListaB() {
+	link p;
+	while (primero) {
+		p = primero->siguiente;
+		delete primero;
+		primero = p;
+	}
+}
+
+template<class T, int N>
+void ListaB<T, N>::print() {
+
+}

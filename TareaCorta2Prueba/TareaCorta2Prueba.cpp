@@ -4,13 +4,14 @@
 #include "pch.h"
 #include <iostream>
 #include "ListaSimple.h"
+#include "ListB.h"
 
 int main() {
 
 	List<int> lm("Lista1");
-	ListaB<int> lp("ListaP");
+	ListaB<int,10> lp("ListaP");
 
-	lp.push_front();
+	lp.push_front(1);
 
 	lm.push_front(30);
 	lm.push_front(20);
