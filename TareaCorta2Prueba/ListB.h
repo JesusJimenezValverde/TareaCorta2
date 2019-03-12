@@ -27,6 +27,7 @@ public:
 	int len();
 	void push_front(T x);
 	void push_back(T x);
+	void push_back_aux(link link1, link link2, T x);
 	void insertar(T x, int pos);
 	bool remove(int pos, T& x);
 	bool pop(T& x);
@@ -63,7 +64,20 @@ void ListaB<T, N>::push_front(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::push_back(T x) {
-
+	push_back_aux(primero, primero, T x);
+}
+template<class T, int N>
+void ListaB<T, N>::push_back_aux(link link1, link link2, T x) {
+	if (link2->lleno)
+		push_back_aux(link2, link2->sig, T x);
+	if link2 == NULL{
+		link2 = new Node();
+	link2->elemento[0] = x;
+	}
+		for (int i = 0, i < 10, i++) {
+			if link2->elemento[i] == NULL
+				link2->elemento[i] = x;
+		}
 
 }
 
