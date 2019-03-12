@@ -10,8 +10,12 @@ int main() {
 
 	List<int> lm("Lista1");
 	ListaB<int,10> lp("ListaP");
-
-	lp.push_front(1);
+	cout << "Nothing";
+	lp.push_back(1);
+	lp.push_back(2);
+	lp.push_back(55);
+	lp.push_back(10);
+	//lp.print();
 
 	//lm.push_front(30);
 	//lm.push_front(20);
@@ -23,7 +27,7 @@ int main() {
 	//lm.insertarR(15, 5);
 	//lm.insertarR(50, 99);
 	//lm.insertarR(999, 1);
-	lm.print();
+	//lm.print();
 	cout << " <-- lista original " << endl;
 	
 	// ************ Pruebas ***************\\
@@ -31,7 +35,7 @@ int main() {
 	int x = 0;
 	lm.pop_back(x);
 
-	lm.print();
+	//lm.print();
 	cout << x << endl;
 
 /*

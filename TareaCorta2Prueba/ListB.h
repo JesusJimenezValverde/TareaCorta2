@@ -25,17 +25,17 @@ class ListaB {
 public:
 	ListaB(string s);
 	int len();
-	void push_front(T x);
-	void push_back(T x);
-	void insertar(T x, int pos);
-	bool remove(int pos, T& x);
-	bool pop(T& x);
-	bool pop_back(T& x);
-	bool get(int pos, T& element);
-	bool get_front(T& element);
-	bool get_back(T& element);
+	void push_front(T x); // Pao
+	void push_back(T x);  // Esteban
+	void insertar(T x, int pos);  // Pao
+	bool remove(int pos, T& x);	  // Esteban
+	bool pop(T& x);				  //Pao
+	bool pop_back(T& x);		  //Esteban
+	bool get(int pos, T& element);	//Pao
+	bool get_front(T& element);		//Esteban
+	bool get_back(T& element);		//Pao
 	~ListaB();
-	void print();
+	void print();					//Esteban
 };
 
 
@@ -58,13 +58,34 @@ void ListaB<T, N>::push_front(T x) {
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
-
 }
 
 template<class T, int N>
 void ListaB<T, N>::push_back(T x) {
-
-
+	if (primero == NULL) {
+		primero = new Node();
+		primero->elemento[0] = x;
+	}
+	else {
+		link aux = primero;
+		while (aux->siguiente != NULL) {
+			aux = aux->siguiente;
+		}
+		if (aux->lleno != true) {
+			for (int i = 0; i < sizeof(aux->elemento); i++) {
+				if (aux->elemento[i] != NULL) {
+					aux->elemento[i] = x;
+					tam++;
+				}
+			}
+		}
+		else {
+			aux->siguiente = new Node();
+			aux = aux->siguiente;
+			aux->elemento[0] = x;
+			tam++;
+		}
+	}
 }
 
 template<class T, int N>
@@ -117,5 +138,15 @@ ListaB<T,N>::~ListaB() {
 
 template<class T, int N>
 void ListaB<T, N>::print() {
-
+	cout << nombreLista << " = [";
+	if (primero) {
+		link p = primero;
+		cout << p->elemento;
+		p = p->siguiente;
+		while (p) {
+			cout << ", " << p->elemento;
+			p = p->siguiente;
+		}
+	}
+	cout << "]";
 }
