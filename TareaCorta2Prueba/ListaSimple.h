@@ -167,18 +167,34 @@ bool List<T>::pop(T & x)
 
 template<class T>
 bool List<T>::pop_back(T & x)
-{
-	link aux = primero;
-	while (aux) {
-		if (aux->siguiente == NULL){
-			x = aux->elemento;
-		delete aux;
+{	
+	if (primero && len() > 1) {
+		//cout << "Camino 1" << endl;
+		link aux = primero;
+		while (aux) {
+			if (aux->siguiente->siguiente == NULL) {
+				link aux2 = aux->siguiente;
+				x = aux2->elemento;
+				aux->siguiente = NULL;
+				delete aux2;
+				tam--;
+				return true;
+			}
+			aux = aux->siguiente;
 		}
-		aux = aux->siguiente;
+	}
+	else if (primero && len() == 1) {
+		//cout << "Camino 2" << endl;
+		x = primero->elemento;
+		link aux = primero;
+		primero = 0;
+		delete aux;
 		tam--;
 		return true;
 	}
-	//return false;
+	else {
+		return false;
+	}
 }
 
 template<class T>
@@ -200,7 +216,7 @@ bool List<T>::get(int pos, T & element)
 			aux = aux->siguiente;
 		}
 	}
-
+	return true;
 }
 
 template<class T>

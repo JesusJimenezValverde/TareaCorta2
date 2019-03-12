@@ -4,33 +4,44 @@
 #include "pch.h"
 #include <iostream>
 #include "ListaSimple.h"
+#include "ListB.h"
 
 int main() {
 
 	List<int> lm("Lista1");
+	ListaB<int,10> lp("ListaP");
 
-	lm.push_front(30);
-	lm.push_front(20);
+	lp.push_front(1);
+
+	//lm.push_front(30);
+	//lm.push_front(20);
 	lm.push_front(10);
 	
-	lm.push_back(40);
-	lm.insertarR(5, 0);
+	//lm.push_back(40);
+	//lm.insertarR(5, 0);
 	//lm.insertarR(8, 1);
 	//lm.insertarR(15, 5);
 	//lm.insertarR(50, 99);
 	//lm.insertarR(999, 1);
 	lm.print();
-	cout << "" << endl;
+	cout << " <-- lista original " << endl;
 	
-	//************ Pruebas ***************\\
+	// ************ Pruebas ***************\\
+	
+	int x = 0;
+	lm.pop_back(x);
 
+	lm.print();
+	cout << x << endl;
+
+/*
 	int devuelve = 0;
 	lm.get(2, devuelve);
 	cout << "El get obtuvo: " << devuelve << endl;
 	//lm.remove(0, devuelve);
 	lm.print();
 	cout << "\n";
-	
+	*/
 	// ***********************************\\
 
 
