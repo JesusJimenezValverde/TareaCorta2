@@ -206,13 +206,21 @@ bool List<T>::get(int pos, T & element)
 template<class T>
 bool List<T>::get_front(T & element)
 {
-	return false;
+	x = primero->elemento;
+	return true;
+	
 }
 
 template<class T>
 bool List<T>::get_back(T & element)
 {
-	return false;
+	link aux = primero;
+	while (aux) {
+		if aux->siguiente == NULL
+			x = aux->elemento;
+		aux = aux->siguiente;
+	}
+	return true;
 }
 
 template<class T>
