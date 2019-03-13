@@ -222,7 +222,7 @@ bool List<T>::get(int pos, T & element)
 template<class T>
 bool List<T>::get_front(T & element)
 {
-	x = primero->elemento;
+	element = primero->elemento;
 	return true;
 	
 }
@@ -232,8 +232,8 @@ bool List<T>::get_back(T & element)
 {
 	link aux = primero;
 	while (aux) {
-		if aux->siguiente == NULL
-			x = aux->elemento;
+		if (aux->siguiente == NULL)
+			element = aux->elemento;
 		aux = aux->siguiente;
 	}
 	return true;

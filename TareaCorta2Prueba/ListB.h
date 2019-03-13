@@ -26,7 +26,7 @@ public:
 	ListaB(string s);
 	int len();
 	void push_front(T x); // Pao
-	void push_back(T x);  // Esteban
+	void push_back(T x);  // Profe
 	void insertar(T x, int pos);  // Pao
 	bool remove(int pos, T& x);	  // Esteban
 	bool pop(T& x);				  //Pao
@@ -62,21 +62,24 @@ void ListaB<T, N>::push_front(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::push_back(T x) {
-	push_back_aux(primero, primero, T x);
-}
-template<class T, int N>
-void ListaB<T, N>::push_back_aux(link link1, link link2, T x) {
-	if (link2->lleno)
-		push_back_aux(link2, link2->sig, T x);
-	if link2 == NULL{
-		link2 = new Node();
-	link2->elemento[0] = x;
+	if (tam == 0) {
+		primero = new Node();
+		primero->elemento[0] = x;
+		tam++;
 	}
-		for (int i = 0, i < 10, i++) {
-			if link2->elemento[i] == NULL
-				link2->elemento[i] = x;
+	else {
+		while (primero->siguiente)
+			primero = primero->siguiente;
+		if (primero->lleno) {
+			primero->siguiente = new Node();
+			primero->siguiente->elemento[0] = x;
+			tam++;
 		}
-
+		else {
+			primero->elemento[tam++ % N] = x;
+			primero->lleno = tam % N == 0;
+		}
+	}
 }
 
 template<class T, int N>
