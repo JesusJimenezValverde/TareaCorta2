@@ -33,7 +33,7 @@ public:
 	bool pop_back(T& x);		  //Esteban
 	bool get(int pos, T& element);	//Pao
 	bool get_front(T& element);		//Esteban
-	bool get_back(T& element);		//Pao
+	bool get_back(T& element);		//Cualquiera
 	~ListaB();
 	void print();					//Esteban
 };
