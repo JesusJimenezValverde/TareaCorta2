@@ -62,30 +62,21 @@ void ListaB<T, N>::push_front(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::push_back(T x) {
-	if (primero == NULL) {
-		primero = new Node();
-		primero->elemento[0] = x;
+	push_back_aux(primero, primero, T x);
+}
+template<class T, int N>
+void ListaB<T, N>::push_back_aux(link link1, link link2, T x) {
+	if (link2->lleno)
+		push_back_aux(link2, link2->sig, T x);
+	if link2 == NULL{
+		link2 = new Node();
+	link2->elemento[0] = x;
 	}
-	else {
-		link aux = primero;
-		while (aux->siguiente != NULL) {
-			aux = aux->siguiente;
+		for (int i = 0, i < 10, i++) {
+			if link2->elemento[i] == NULL
+				link2->elemento[i] = x;
 		}
-		if (aux->lleno != true) {
-			for (int i = 0; i < sizeof(aux->elemento); i++) {
-				if (aux->elemento[i] != NULL) {
-					aux->elemento[i] = x;
-					tam++;
-				}
-			}
-		}
-		else {
-			aux->siguiente = new Node();
-			aux = aux->siguiente;
-			aux->elemento[0] = x;
-			tam++;
-		}
-	}
+
 }
 
 template<class T, int N>
