@@ -12,14 +12,34 @@ int main() {
 	ListaB<int,10> lp("ListaP");
 	cout << "Nothing";
 	lp.push_back(1);
-	lp.push_back(2);
-	lp.push_back(55);
-	lp.push_back(10);
-	//lp.print();
+	//lp.push_back(2);
+	//lp.push_back(55);
+	//lp.push_back(10);
+	//lp.push_back(11);
+	//lp.push_back(22);
+	//lp.push_back(553);
+	//lp.push_back(104);
+	//lp.push_back(15);
+	//lp.push_back(26);
+	//lp.push_back(575);
+	//lp.push_back(180);
+	//lp.push_back(1);
+	//lp.push_back(2);
+	//lp.push_back(55);
+	//lp.push_back(10);
+	//lp.push_back(11);
+	//lp.push_back(22);
+	//lp.push_back(553);
+	//lp.push_back(104);
+	//lp.push_back(15);
+	//lp.push_back(26);
+	//lp.push_back(575);
+	//lp.push_back(180);
+	lp.print();
 
 	//lm.push_front(30);
 	//lm.push_front(20);
-	lm.push_front(10);
+	//lm.push_front(10);
 	
 	//lm.push_back(40);
 	//lm.insertarR(5, 0);
@@ -28,7 +48,7 @@ int main() {
 	//lm.insertarR(50, 99);
 	//lm.insertarR(999, 1);
 	//lm.print();
-	cout << " <-- lista original " << endl;
+	//cout << " <-- lista original " << endl;
 	
 	// ************ Pruebas ***************\\
 	
@@ -36,7 +56,7 @@ int main() {
 	lm.pop_back(x);
 
 	//lm.print();
-	cout << x << endl;
+	//cout << x << endl;
 
 /*
 	int devuelve = 0;
@@ -49,11 +69,11 @@ int main() {
 	// ***********************************\\
 
 
-	List<string> la("Personas");
-	la.push_back("ana");
-	la.push_back("juan");
-	la.print();
-	cout << "\n";
+	//List<string> la("Personas");
+	//la.push_back("ana");
+	//la.push_back("juan");
+	//la.print();
+	//cout << "\n";
 
 	//system("pause");
 }

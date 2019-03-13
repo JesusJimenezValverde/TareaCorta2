@@ -68,18 +68,20 @@ void ListaB<T, N>::push_back(T x) {
 		tam++;
 	}
 	else {
-		while (primero->siguiente)
-			primero = primero->siguiente;
-		if (primero->lleno) {
-			primero->siguiente = new Node();
-			primero->siguiente->elemento[0] = x;
+		link p = primero;
+		while (p->siguiente)
+			p = p->siguiente;
+		if (p->lleno) {
+			p->siguiente = new Node();
+			p->siguiente->elemento[0] = x;
 			tam++;
 		}
 		else {
-			primero->elemento[tam++ % N] = x;
-			primero->lleno = tam % N == 0;
+			p->elemento[tam++ % N] = x;
+			p->lleno = tam % N == 0;
 		}
 	}
+	cout << "Tamanno es : " << tam << endl;
 }
 
 template<class T, int N>
@@ -132,13 +134,21 @@ ListaB<T,N>::~ListaB() {
 
 template<class T, int N>
 void ListaB<T, N>::print() {
+	cout << "Printing" << endl;
 	cout << nombreLista << " = [";
 	if (primero) {
 		link p = primero;
-		cout << p->elemento;
-		p = p->siguiente;
-		while (p) {
-			cout << ", " << p->elemento;
+		int pasada = 0;
+		while (p!=NULL) {
+			int cont = 0;
+			while (cont < N && cont+(10*pasada) < tam) {
+				cout << p->elemento[cont];
+				cont++;
+				if (cont + (10 * pasada) < tam) {
+					cout << ", ";
+				}
+			}
+			pasada++;
 			p = p->siguiente;
 		}
 	}
