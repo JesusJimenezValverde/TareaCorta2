@@ -22,6 +22,7 @@ class ListaB {
 	link primero; // Puntero al primer nodo
 	int tam; // Cantidad de elementos totales en la lista
 	string nombreLista; // Nombre de la lista
+
 public:
 	ListaB(string s);     // Listo
 	int len();			  // Listo
@@ -117,7 +118,7 @@ bool ListaB<T, N>::pop(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop_back(T& x) {
-	if (primero) {
+	if (tam>0) {
 		link p = primero;
 		int cont = 0;
 		while (p->siguiente != NULL) {
