@@ -23,19 +23,19 @@ class ListaB {
 	int tam; // Cantidad de elementos totales en la lista
 	string nombreLista; // Nombre de la lista
 public:
-	ListaB(string s);
-	int len();
+	ListaB(string s);     // Listo
+	int len();			  // Listo
 	void push_front(T x); // Pao
-	void push_back(T x);  // Profe
+	void push_back(T x);  // Resuelto en clases - Listo
 	void insertar(T x, int pos);  // Pao
 	bool remove(int pos, T& x);	  // Esteban
 	bool pop(T& x);				  //Pao
 	bool pop_back(T& x);		  //Esteban
 	bool get(int pos, T& element);	//Pao
-	bool get_front(T& element);		//Esteban
-	bool get_back(T& element);		//Cualquiera
-	~ListaB();
-	void print();					//Esteban
+	bool get_front(T& element);		//Esteban - Listo
+	bool get_back(T& element);		//Cualquiera Esteban - Listo
+	~ListaB();						// Listo
+	void print();					//Esteban - Listo
 };
 
 
@@ -113,12 +113,33 @@ bool ListaB<T, N>::get(int pos, T& element) {
 template<class T, int N>
 bool ListaB<T,N>::get_front(T& element)
 {
-	return false;
+	if (primero && tam > 0) {
+		element = primero->elemento[0];
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 template<class T, int N>
 bool ListaB<T,N>::get_back(T& element)
 {
+	if (primero) {
+		link p = primero;
+		int cont = 0;
+		while (p->siguiente != NULL) {
+			p = p->siguiente;
+			cont += 10;
+		}
+		int pos = 0;
+		while (cont < tam) {
+			cont++;
+			pos++;
+		}
+		element = p->elemento[pos-1];
+		return true;
+	}
 	return false;
 }
 
