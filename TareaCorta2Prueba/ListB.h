@@ -217,7 +217,15 @@ bool ListaB<T, N>::pop_back(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::get(int pos, T& element) {
-	return false;
+	int i = pos / 10;
+	link index = primero;
+	for (int j = 0; j < i; j++) {
+		index = index->siguiente;
+		if (index == NULL)
+			return get_back();
+	}
+	i = pos % 10;
+	return index->elemento[i];
 }
 
 template<class T, int N>
