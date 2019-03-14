@@ -30,7 +30,7 @@ public:
 	void insertar(T x, int pos);  // Pao
 	bool remove(int pos, T& x);	  // Esteban
 	bool pop(T& x);				  //Pao
-	bool pop_back(T& x);		  //Esteban
+	bool pop_back(T& x);		  //Esteban - Listo
 	bool get(int pos, T& element);	//Pao
 	bool get_front(T& element);		//Esteban - Listo
 	bool get_back(T& element);		//Cualquiera Esteban - Listo
@@ -109,10 +109,12 @@ bool ListaB<T, N>::pop_back(T& x) {
 			p = p->siguiente;
 			cont += N;
 		}
-
-		link aux = primero;							// Este se encarga de poner el puntero del nodo anterior en NULL
-		while (aux->siguiente->siguiente != NULL) {
-			aux = aux->siguiente;
+		link aux = primero;	
+		if (tam > N) {
+			// Este se encarga de poner el puntero del nodo anterior en NULL
+			while (aux->siguiente->siguiente != NULL) {
+				aux = aux->siguiente;
+			}
 		}
 
 		int pos = 0;
