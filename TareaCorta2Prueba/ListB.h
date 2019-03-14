@@ -92,6 +92,21 @@ void ListaB<T, N>::insertar(T x, int pos) {
 
 template<class T, int N>
 bool ListaB<T, N>::remove(int pos, T& x) {
+	if (primero) {
+		if (pos == 0) {
+			pop(x);
+			return true;
+		}
+		else if (pos == tam) {
+			pop_back(x);
+			return true;
+		}
+		else
+		{
+			//por hacer
+			return true;
+		}
+	}
 	return false;
 }
 
