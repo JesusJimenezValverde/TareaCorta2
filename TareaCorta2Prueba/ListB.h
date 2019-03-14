@@ -111,7 +111,36 @@ void ListaB<T, N>::push_back(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::insertar(T x, int pos) {
-
+	int i = pos / 10;
+	link index = primero;
+	for (int j = 0; j < i; j++) {
+		index = index->siguiente;
+		if (index == NULL) {
+			push_back(x);
+			return;
+		}
+	}
+	i = pos % 10;
+	T aux = index->elemento[i];
+	T aux2 = index->elemento[i + 1];
+	index->elemento[i] = x;
+	while (aux2 != NULL) {
+		index->elemento[i] = aux;
+		aux = aux2;
+		aux2 = index->elemento[i + 1];
+		i++;
+		if (i == 8) {
+			index->elemento[i + 1] = aux;
+			aux = aux2;
+			if (index->siguiente == NULL) {
+				index->siguiente = new Node();
+			}
+			index = index->siguiente;
+			aux2 = index->elemento[0];
+			i = 0;
+		}
+	}
+	index->elemento[i + 1] = aux;
 
 }
 
