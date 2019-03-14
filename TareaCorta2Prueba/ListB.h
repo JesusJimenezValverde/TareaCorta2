@@ -54,9 +54,34 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
-	if (primero == NULL) {
-		primero = new Node();
-		primero->elemento[0] = x;
+		if (list.lleno()) {
+			primero = new Node();
+			primero->elemento[0] = x;
+		}
+		else {
+			link index = primero;
+			T aux = index->elemento[0];
+			T aux2 = index->elemento[1];
+			index->elemento[0] = x;
+			int i = 1;
+			while (aux2 != NULL) {
+				index->elemento[i] = aux;
+				aux = aux2;
+				aux2 = index->elemento[i + 1];
+				i++;
+				if (i == 8) {
+					index->elemento[i + 1] = aux;
+					aux = aux2;
+					if (index->siguiente == NULL) {
+						index->siguiente = new Node();
+					}
+					index = index->siguiente;
+					aux2 = index->elemento[0];
+					i = 0;
+				}
+			}
+			index->elemento[i + 1] = aux;
+		}
 	}
 }
 
