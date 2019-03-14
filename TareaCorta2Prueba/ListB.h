@@ -55,9 +55,34 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
-	if (primero == NULL) {
-		primero = new Node();
-		primero->elemento[0] = x;
+		if (list.lleno()) {
+			primero = new Node();
+			primero->elemento[0] = x;
+		}
+		else {
+			link index = primero;
+			T aux = index->elemento[0];
+			T aux2 = index->elemento[1];
+			index->elemento[0] = x;
+			int i = 1;
+			while (aux2 != NULL) {
+				index->elemento[i] = aux;
+				aux = aux2;
+				aux2 = index->elemento[i + 1];
+				i++;
+				if (i == 8) {
+					index->elemento[i + 1] = aux;
+					aux = aux2;
+					if (index->siguiente == NULL) {
+						index->siguiente = new Node();
+					}
+					index = index->siguiente;
+					aux2 = index->elemento[0];
+					i = 0;
+				}
+			}
+			index->elemento[i + 1] = aux;
+		}
 	}
 }
 
@@ -87,7 +112,36 @@ void ListaB<T, N>::push_back(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::insertar(T x, int pos) {
-
+	int i = pos / 10;
+	link index = primero;
+	for (int j = 0; j < i; j++) {
+		index = index->siguiente;
+		if (index == NULL) {
+			push_back(x);
+			return;
+		}
+	}
+	i = pos % 10;
+	T aux = index->elemento[i];
+	T aux2 = index->elemento[i + 1];
+	index->elemento[i] = x;
+	while (aux2 != NULL) {
+		index->elemento[i] = aux;
+		aux = aux2;
+		aux2 = index->elemento[i + 1];
+		i++;
+		if (i == 8) {
+			index->elemento[i + 1] = aux;
+			aux = aux2;
+			if (index->siguiente == NULL) {
+				index->siguiente = new Node();
+			}
+			index = index->siguiente;
+			aux2 = index->elemento[0];
+			i = 0;
+		}
+	}
+	index->elemento[i + 1] = aux;
 
 }
 
@@ -113,7 +167,19 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop(T& x) {
-	return false;
+	link index = primero;
+	while (index->siguiente != NULL) {
+		index = index->siguiente;
+	}
+	int i = 0;
+	T x = index->elemento[i];
+	while (x != NULL) {
+		x = index->elemento[i];
+		i++;
+	}
+	x = index->elemento[i - 1];
+	index->elemento[i - 1] = NULL;
+	return x;
 }
 
 template<class T, int N>
@@ -152,7 +218,15 @@ bool ListaB<T, N>::pop_back(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::get(int pos, T& element) {
-	return false;
+	int i = pos / 10;
+	link index = primero;
+	for (int j = 0; j < i; j++) {
+		index = index->siguiente;
+		if (index == NULL)
+			return get_back();
+	}
+	i = pos % 10;
+	return index->elemento[i];
 }
 
 template<class T, int N>
