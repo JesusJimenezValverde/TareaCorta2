@@ -166,7 +166,19 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop(T& x) {
-	return false;
+	link index = primero;
+	while (index->siguiente != NULL) {
+		index = index->siguiente;
+	}
+	int i = 0;
+	T x = index->elemento[i];
+	while (x != NULL) {
+		x = index->elemento[i];
+		i++;
+	}
+	x = index->elemento[i - 1];
+	index->elemento[i - 1] = NULL;
+	return x;
 }
 
 template<class T, int N>
