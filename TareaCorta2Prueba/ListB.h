@@ -102,6 +102,33 @@ bool ListaB<T, N>::pop(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop_back(T& x) {
+	if (primero) {
+		link p = primero;
+		int cont = 0;
+		while (p->siguiente != NULL) {
+			p = p->siguiente;
+			cont += N;
+		}
+
+		link aux = primero;							// Este se encarga de poner el puntero del nodo anterior en NULL
+		while (aux->siguiente->siguiente != NULL) {
+			aux = aux->siguiente;
+		}
+
+		int pos = 0;
+		while (cont < tam) {
+			cont++;
+			pos++;
+		}
+		x = p->elemento[pos - 1];
+		p->elemento[pos - 1] = NULL;
+		if (pos - 1 == 0) {
+			aux->siguiente = NULL;
+			delete p;
+		}
+		tam -= 1;
+		return true;
+	}
 	return false;
 }
 
@@ -130,7 +157,7 @@ bool ListaB<T,N>::get_back(T& element)
 		int cont = 0;
 		while (p->siguiente != NULL) {
 			p = p->siguiente;
-			cont += 10;
+			cont += N;
 		}
 		int pos = 0;
 		while (cont < tam) {
@@ -162,7 +189,7 @@ void ListaB<T, N>::print() {
 		int pasada = 0;
 		while (p!=NULL) {
 			int cont = 0;
-			while (cont < N && cont+(10*pasada) < tam) {
+			while (cont < N && cont+(N*pasada) < tam) {
 				cout << p->elemento[cont];
 				cont++;
 				if (cont + (10 * pasada) < tam) {
