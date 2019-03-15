@@ -52,12 +52,12 @@ int main() {
 	// ************ Pruebas ***************\\
 	
 	int x = 0;
-	lp.remove(9,x);
-
+	lp.remove(24,x);
+	cout << lp.len() << endl;
 	cout << x << endl;
 	lp.print();
 
-	lp.push_back(9999);
+	//lp.push_back(9999);
 	lp.print();
 
 /*

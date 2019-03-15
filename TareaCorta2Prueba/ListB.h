@@ -169,15 +169,8 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 				auxmov++;
 				movidos = punteroaux->elemento[auxmov];
 			}
-			//Ya llegue al elemento a eliminar
-			//cout << "Tamanno = " << tam << " , moviendo = " << moviendo << endl;
 			while (moviendo < tam) {
-				cout << "\n Entre al while" << endl;
-				cout << "Tamanno = " << tam << " , moviendo = " << auxmov << endl;
-				print();
-				//punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
 				if (auxmov == N-1) {
-					cout << "Caso 1" << endl;
 					link punteroanterior = punteroaux;
 					punteroaux = punteroaux->siguiente;
 					punteroanterior->elemento[auxmov] = punteroaux->elemento[0];
@@ -185,13 +178,11 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 					moviendo++;
 				}
 				else {
-					cout << "Caso 2" << endl;
 					punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
 					auxmov++;
 					moviendo++;
 				}
 			}
-			//cout << "Tamanno = " << tam << " , moviendo = " << moviendo << endl;
 			tam--;
 			return true;
 		}
