@@ -52,7 +52,7 @@ int main() {
 	// ************ Pruebas ***************\\
 	
 	int x = 0;
-	lp.pop_back(x);
+	lp.remove(7,x);
 
 	cout << x << endl;
 	lp.print();

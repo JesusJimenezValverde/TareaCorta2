@@ -24,8 +24,8 @@ class ListaB {
 	string nombreLista; // Nombre de la lista
 
 public:
-	ListaB(string s);     // Listo
-	int len();			  // Listo
+	ListaB(string s);     // Esteban - Listo
+	int len();			  // Esteban - Listo
 	void push_front(T x); // Pao
 	void push_back(T x);  // Resuelto en clases - Listo
 	void insertar(T x, int pos);  // Pao
@@ -35,7 +35,7 @@ public:
 	bool get(int pos, T& element);	//Pao
 	bool get_front(T& element);		//Esteban - Listo
 	bool get_back(T& element);		//Cualquiera Esteban - Listo
-	~ListaB();						// Listo
+	~ListaB();						// Esteban - Listo
 	void print();					//Esteban - Listo
 };
 
@@ -55,7 +55,7 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
-	if (list.lleno()) {
+	if (tam==0) {
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
@@ -141,12 +141,11 @@ void ListaB<T, N>::insertar(T x, int pos) {
 		}
 	}
 	index->elemento[i + 1] = aux;
-
 }
 
 template<class T, int N>
 bool ListaB<T, N>::remove(int pos, T& x) {
-	if (primero) {
+	if (tam>0 && pos<=tam) {
 		if (pos == 0) {
 			pop(x);
 			return true;
@@ -157,7 +156,24 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 		}
 		else
 		{
-			//por hacer
+			T movidos = primero->elemento[0];
+			T aux1 = primero->elemento[0];
+			T aux2 = primero->elemento[0];
+			link punteroaux = primero;
+			int moviendo = 0; //encargado de la posicion global
+			int auxmov = 0; // encargado de la posicion dentro del vector
+			while (moviendo < pos && punteroaux->siguiente!= NULL) {
+				moviendo += N;
+				punteroaux = punteroaux->siguiente;
+			}
+			while (auxmov < N && moviendo != pos) {
+				moviendo++;
+				auxmov++;
+				movidos = punteroaux->elemento[auxmov];
+			}
+			//Ya llegue al elemento a eliminar
+
+
 			return true;
 		}
 	}
@@ -171,9 +187,9 @@ bool ListaB<T, N>::pop(T& x) {
 		index = index->siguiente;
 	}
 	int i = 0;
-	T x = index->elemento[i];
-	while (x != NULL) {
-		x = index->elemento[i];
+	T aux = index->elemento[i];
+	while (aux != NULL) {
+		aux = index->elemento[i];
 		i++;
 	}
 	x = index->elemento[i - 1];
@@ -217,14 +233,14 @@ bool ListaB<T, N>::pop_back(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::get(int pos, T& element) {
-	int i = pos / 10;
+	int i = pos / N;
 	link index = primero;
 	for (int j = 0; j < i; j++) {
 		index = index->siguiente;
 		if (index == NULL)
 			return get_back();
 	}
-	i = pos % 10;
+	i = pos % N;
 	return index->elemento[i];
 }
 
@@ -243,7 +259,7 @@ bool ListaB<T,N>::get_front(T& element)
 template<class T, int N>
 bool ListaB<T,N>::get_back(T& element)
 {
-	if (primero) {
+	if (tam>0) {
 		link p = primero;
 		int cont = 0;
 		while (p->siguiente != NULL) {
@@ -273,9 +289,9 @@ ListaB<T,N>::~ListaB() {
 
 template<class T, int N>
 void ListaB<T, N>::print() {
-	cout << "Printing" << endl;
+	cout << "Printing ";
 	cout << nombreLista << " = [";
-	if (primero) {
+	if (tam>0) {
 		link p = primero;
 		int pasada = 0;
 		while (p!=NULL) {
@@ -283,7 +299,7 @@ void ListaB<T, N>::print() {
 			while (cont < N && cont+(N*pasada) < tam) {
 				cout << p->elemento[cont];
 				cont++;
-				if (cont + (10 * pasada) < tam) {
+				if (cont + (N * pasada) < tam) {
 					cout << ", ";
 				}
 			}
