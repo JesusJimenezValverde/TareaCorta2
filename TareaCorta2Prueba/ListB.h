@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-//using std::string;
-//using std::cout;
 
 using namespace std;
 
@@ -38,8 +36,6 @@ public:
 	~ListaB();						// Esteban - Listo
 	void print();					//Esteban - Listo
 };
-
-
 
 template<class T, int N>
 ListaB<T,N>::ListaB(string s) {
