@@ -157,23 +157,42 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 		else
 		{
 			T movidos = primero->elemento[0];
-			T aux1 = primero->elemento[0];
-			T aux2 = primero->elemento[0];
 			link punteroaux = primero;
 			int moviendo = 0; //encargado de la posicion global
 			int auxmov = 0; // encargado de la posicion dentro del vector
-			while (moviendo < pos && punteroaux->siguiente!= NULL) {
+			while (pos > N && punteroaux->siguiente!= NULL) {
 				moviendo += N;
 				punteroaux = punteroaux->siguiente;
 			}
-			while (auxmov < N && moviendo != pos) {
+			while (auxmov < N && moviendo < pos) {
 				moviendo++;
 				auxmov++;
 				movidos = punteroaux->elemento[auxmov];
 			}
 			//Ya llegue al elemento a eliminar
-
-
+			//cout << "Tamanno = " << tam << " , moviendo = " << moviendo << endl;
+			while (moviendo < tam) {
+				cout << "\n Entre al while" << endl;
+				cout << "Tamanno = " << tam << " , moviendo = " << auxmov << endl;
+				print();
+				//punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
+				if (auxmov == N-1) {
+					cout << "Caso 1" << endl;
+					link punteroanterior = punteroaux;
+					punteroaux = punteroaux->siguiente;
+					punteroanterior->elemento[auxmov] = punteroaux->elemento[0];
+					auxmov = 0;
+					moviendo++;
+				}
+				else {
+					cout << "Caso 2" << endl;
+					punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
+					auxmov++;
+					moviendo++;
+				}
+			}
+			//cout << "Tamanno = " << tam << " , moviendo = " << moviendo << endl;
+			tam--;
 			return true;
 		}
 	}
@@ -307,5 +326,5 @@ void ListaB<T, N>::print() {
 			p = p->siguiente;
 		}
 	}
-	cout << "]";
+	cout << "] \n";
 }
