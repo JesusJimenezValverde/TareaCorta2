@@ -60,18 +60,43 @@ void ListaB<T, N>::push_front(T x) {
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
-	else {
+	else if (tam == 1) {
 		cout << "Caso 2" << endl;
+		primero->elemento[1] = primero->elemento[0];
+		primero->elemento[0] = x;
+	}
+	else if (tam == 2) {
+		cout << "Caso 3" << endl;
+		primero->elemento[2] = primero->elemento[1];
+		primero->elemento[1] = primero->elemento[0];
+		primero->elemento[0] = x;
+	}
+	else {
+		cout << "Caso 4, Introduciendo ="<< x << endl;
 		int stotal = 0;
 		T sostenido = primero->elemento[0];
+		T sostenerS = primero->elemento[2];
 		link p = primero;
 		while (stotal < tam) {
 			int moviendo = 0;
-			while (moviendo < N - 1) {
-				sostenido = p->elemento[moviendo];
-
-
+			link prueba = p->elemento[0];
+			while (moviendo < N - 4 && moviendo < tam-1) {
+				sostenido = p->elemento[moviendo + 1];
+				p->elemento[moviendo + 1] = p->elemento[moviendo];
+				moviendo++;
+				sostenerS = p->elemento[moviendo + 1];
+				p->elemento[moviendo + 1] = sostenido;
+				moviendo++;
+				prueba = p->elemento[moviendo + 1];
+				p->elemento[moviendo + 1] = sostenerS;
+				moviendo++;
+				stotal += 2;
 			}
+			cout << "Moviendo = " << moviendo << endl;
+			tam++;
+			print();
+			tam--;
+			cout << "Stotal = " <<stotal<< endl;
 			if (p->siguiente != NULL) {
 				p = p->siguiente;
 			}
@@ -81,33 +106,6 @@ void ListaB<T, N>::push_front(T x) {
 				p->elemento[0] = sostenido;
 			}
 		}
-
-
-
-
-
-/*		link index = primero;
-		T aux = index->elemento[0];
-		T aux2 = index->elemento[1];
-		//index->elemento[0] = x;
-		int i = 1;
-		while (aux2 != NULL) {
-			index->elemento[i] = aux;
-			aux = aux2;
-			aux2 = index->elemento[i + 1];
-			i++;
-			if (i == N-2) {
-				index->elemento[i + 1] = aux;
-				aux = aux2;
-				if (index->siguiente == NULL) {
-					index->siguiente = new Node();
-				}
-				index = index->siguiente;
-				aux2 = index->elemento[0];
-				i = 0;
-			}
-		}
-		index->elemento[i + 1] = aux;*/
 		primero->elemento[0] = x;
 	}
 	tam++;
@@ -271,15 +269,22 @@ bool ListaB<T, N>::pop_back(T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::get(int pos, T& element) {
-	int i = pos / N;
-	link index = primero;
-	for (int j = 0; j < i; j++) {
-		index = index->siguiente;
-		if (index == NULL)
-			return get_back();
+	if (pos > tam || tam==0) {
+		return false;
 	}
-	i = pos % N;
-	return index->elemento[i];
+	link punteroaux = primero;
+	int moviendo = 0; //encargado de la posicion global
+	int auxmov = 0; // encargado de la posicion dentro del vector
+	while (pos > N && punteroaux->siguiente != NULL) {
+		moviendo += N;
+		punteroaux = punteroaux->siguiente;
+	}
+	while (auxmov < N && moviendo < pos) {
+		moviendo++;
+		auxmov++;
+	}
+	x = punteroaux->elemento[auxmov];
+	return true;
 }
 
 template<class T, int N>
