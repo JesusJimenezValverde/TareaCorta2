@@ -283,7 +283,7 @@ bool ListaB<T, N>::get(int pos, T& element) {
 		moviendo++;
 		auxmov++;
 	}
-	x = punteroaux->elemento[auxmov];
+	element = punteroaux->elemento[auxmov];
 	return true;
 }
 
