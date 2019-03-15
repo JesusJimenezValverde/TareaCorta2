@@ -10,6 +10,33 @@ int main() {
 
 	List<int> lm("Lista1");
 	ListaB<int,10> lp("ListaP");
+	lp.push_front(1);
+	lp.print();
+	lp.push_front(2);
+	lp.print();
+	lp.push_front(3);
+	lp.print();
+	lp.push_front(4);
+	lp.print();
+	lp.push_front(5);
+	lp.print();
+	lp.push_front(6);
+	lp.print();
+	lp.push_front(7);
+	lp.print();
+	
+	lp.push_front(8);
+	lp.print();
+	lp.push_front(9);
+	lp.print();
+	lp.push_front(10);
+	lp.print();
+	
+	lp.push_front(11);
+	lp.print();
+	lp.push_front(12);
+	lp.print();
+
 	//lp.push_back(1);
 	//lp.push_back(2);
 	//lp.push_back(55);

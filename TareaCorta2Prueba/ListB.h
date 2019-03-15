@@ -56,21 +56,47 @@ int ListaB<T, N>::len() {
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
 	if (tam==0) {
+		cout << "Caso 1" << endl;
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
 	else {
-		link index = primero;
+		cout << "Caso 2" << endl;
+		int stotal = 0;
+		T sostenido = primero->elemento[0];
+		link p = primero;
+		while (stotal < tam) {
+			int moviendo = 0;
+			while (moviendo < N - 1) {
+				sostenido = p->elemento[moviendo];
+
+
+			}
+			if (p->siguiente != NULL) {
+				p = p->siguiente;
+			}
+			else {
+				p->siguiente = new Node();
+				p = p->siguiente;
+				p->elemento[0] = sostenido;
+			}
+		}
+
+
+
+
+
+/*		link index = primero;
 		T aux = index->elemento[0];
 		T aux2 = index->elemento[1];
-		index->elemento[0] = x;
+		//index->elemento[0] = x;
 		int i = 1;
 		while (aux2 != NULL) {
 			index->elemento[i] = aux;
 			aux = aux2;
 			aux2 = index->elemento[i + 1];
 			i++;
-			if (i == 8) {
+			if (i == N-2) {
 				index->elemento[i + 1] = aux;
 				aux = aux2;
 				if (index->siguiente == NULL) {
@@ -81,8 +107,10 @@ void ListaB<T, N>::push_front(T x) {
 				i = 0;
 			}
 		}
-		index->elemento[i + 1] = aux;
+		index->elemento[i + 1] = aux;*/
+		primero->elemento[0] = x;
 	}
+	tam++;
 }
 
 template<class T, int N>
