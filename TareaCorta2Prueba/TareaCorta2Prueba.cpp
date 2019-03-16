@@ -22,12 +22,12 @@ int main() {
 	lp.push_front(10);
 	lp.push_front(11);
 	lp.push_front(12);
-	//lp.push_front(1);
-	//lp.push_front(2);
-	//lp.push_front(3);
-	//lp.push_front(4);
-	//lp.push_front(5);
-	//lp.push_front(6);
+	lp.push_front(1);
+	lp.push_front(2);
+	lp.push_front(3);
+	lp.push_front(4);
+	lp.push_front(5);
+	lp.push_front(6);
 	//lp.push_front(7);
 	//lp.push_front(8);
 	//lp.push_front(9);
