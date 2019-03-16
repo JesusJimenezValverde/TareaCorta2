@@ -10,51 +10,49 @@ int main() {
 
 	List<int> lm("Lista1");
 	ListaB<int,10> lp("ListaP");
-	//lp.push_front(1);
-	//lp.print();
-	//lp.push_front(2);
-	//lp.print();
-	//lp.push_front(3);
-	//lp.print();
-	//lp.push_front(4);
-	//lp.print();
-	//lp.push_front(5);
-	//lp.print();
-	//lp.push_front(6);
-	//lp.print();
+	lp.push_front(1);
+	lp.push_front(2);
+	lp.push_front(3);
+	lp.push_front(4);
+	lp.push_front(5);
+	lp.push_front(6);
+	lp.push_front(7);
+	lp.push_front(8);
+	lp.push_front(9);
+	lp.push_front(10);
+	lp.push_front(11);
+	lp.push_front(12);
+	lp.push_front(1);
+	lp.push_front(2);
+	lp.push_front(3);
+	lp.push_front(4);
+	lp.push_front(5);
+	lp.push_front(6);
 	//lp.push_front(7);
-	//lp.print();
-	//
 	//lp.push_front(8);
-	//lp.print();
 	//lp.push_front(9);
-	//lp.print();
 	//lp.push_front(10);
-	//lp.print();
-	//
 	//lp.push_front(11);
-	//lp.print();
 	//lp.push_front(12);
-	//lp.print();
 
-	lp.push_back(1);
-	lp.push_back(2);
-	lp.push_back(55);
-	lp.push_back(10);
-	lp.push_back(11);
-	lp.push_back(22);
-	lp.push_back(553);
-	lp.push_back(104);
-	lp.push_back(15);
-	lp.push_back(26);
-	lp.push_back(575);
-	lp.push_back(180);
-	lp.push_back(1);
-	lp.push_back(2);
-	lp.push_back(55);
-	lp.push_back(10);
-	lp.push_back(11);
-	lp.push_back(22);
+	//lp.push_back(1);
+	//lp.push_back(2);
+	//lp.push_back(55);
+	//lp.push_back(10);
+	//lp.push_back(11);
+	//lp.push_back(22);
+	//lp.push_back(553);
+	//lp.push_back(104);
+	//lp.push_back(15);
+	//lp.push_back(26);
+	//lp.push_back(575);
+	//lp.push_back(180);
+	//lp.push_back(1);
+	//lp.push_back(2);
+	//lp.push_back(55);
+	//lp.push_back(10);
+	//lp.push_back(11);
+	//lp.push_back(22);
 	//lp.push_back(553);
 	//lp.push_back(104);
 	//lp.push_back(15);
@@ -78,10 +76,10 @@ int main() {
 	
 	// ************ Pruebas ***************\\
 	
-	int x = 0;
-	lp.get(10,x);
+	//int x = 0;
+	//lp.pop(x);
 	//cout << lp.len() << endl;
-	cout <<"El valor obtenido del get fue "<< x << endl;
+	//cout <<"El valor obtenido del get fue "<< x << endl;
 	lp.print();
 
 	////lp.push_back(9999);

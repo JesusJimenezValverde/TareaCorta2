@@ -28,9 +28,9 @@ public:
 	void push_back(T x);  // Resuelto en clases - Listo
 	void insertar(T x, int pos);  // Pao
 	bool remove(int pos, T& x);	  // Esteban
-	bool pop(T& x);				  //Pao
+	bool pop(T& x);				  //Pao -- Esteban - Listo
 	bool pop_back(T& x);		  //Esteban - Listo
-	bool get(int pos, T& element);	//Esteban - Listo
+	bool get(int pos, T& element);	//Pao -- Esteban - Listo
 	bool get_front(T& element);		//Esteban - Listo
 	bool get_back(T& element);		//Cualquiera Esteban - Listo
 	~ListaB();						// Esteban - Listo
@@ -51,60 +51,71 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
+	cout << "-----------------------------------------" << endl;
 	if (tam==0) {
-		cout << "Caso 1" << endl;
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
-	else if (tam == 1) {
-		cout << "Caso 2" << endl;
-		primero->elemento[1] = primero->elemento[0];
-		primero->elemento[0] = x;
-	}
-	else if (tam == 2) {
-		cout << "Caso 3" << endl;
-		primero->elemento[2] = primero->elemento[1];
-		primero->elemento[1] = primero->elemento[0];
-		primero->elemento[0] = x;
-	}
 	else {
-		cout << "Caso 4, Introduciendo ="<< x << endl;
-		int stotal = 0;
-		T sostenido = primero->elemento[0];
-		T sostenerS = primero->elemento[2];
-		link p = primero;
-		while (stotal < tam) {
-			int moviendo = 0;
-			link prueba = p->elemento[0];
-			while (moviendo < N - 4 && moviendo < tam-1) {
-				sostenido = p->elemento[moviendo + 1];
-				p->elemento[moviendo + 1] = p->elemento[moviendo];
-				moviendo++;
-				sostenerS = p->elemento[moviendo + 1];
-				p->elemento[moviendo + 1] = sostenido;
-				moviendo++;
-				prueba = p->elemento[moviendo + 1];
-				p->elemento[moviendo + 1] = sostenerS;
-				moviendo++;
-				stotal += 2;
+		cout << "Caso 2" << endl;
+		T movidos = primero->elemento[0];
+		link punteroaux = primero;
+		link punteroemergente = primero;
+		int moviendo = 0; //encargado de la posicion global
+		int auxmov = 0; // encargado de la posicion dentro del vector
+		while (punteroaux->siguiente != NULL) {
+			moviendo += N;
+			punteroaux = punteroaux->siguiente;
+		}
+		while (moviendo < tam-1) {
+			moviendo++;
+			auxmov++;
+			//movidos = punteroaux->elemento[auxmov];
+		}
+		//cout << "Soy auxmoc " << auxmov << endl;
+		while (moviendo > -1) {
+			cout << "Soy auxmov = " << auxmov << endl;
+			if (auxmov == N - 1) {
+				cout << "Caso 2a" << endl;
+				link punteroanterior = punteroaux;
+				punteroaux->siguiente = new Node();
+				punteroaux = punteroaux->siguiente;
+				punteroaux->elemento[0] = punteroanterior->elemento[auxmov];
+				punteroaux = punteroanterior;
+				auxmov--;
+				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
-			cout << "Moviendo = " << moviendo << endl;
-			tam++;
-			print();
-			tam--;
-			cout << "Stotal = " <<stotal<< endl;
-			if (p->siguiente != NULL) {
-				p = p->siguiente;
+			else if (auxmov == 0 && tam>N-1) {
+				cout << "Caso 2b moviendo" <<moviendo << endl;
+				while (punteroemergente != punteroaux && moviendo>2*N) {
+					punteroemergente = punteroemergente->siguiente;
+				}
+				punteroaux->elemento[auxmov] = punteroemergente->elemento[N - 1];
+				auxmov = N - 2;
+				punteroaux = punteroemergente;
+				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
 			else {
-				p->siguiente = new Node();
-				p = p->siguiente;
-				p->elemento[0] = sostenido;
+				cout << "Caso 2c, mov "<< auxmov << endl;
+				punteroaux->elemento[auxmov + 1] = punteroaux->elemento[auxmov];
+				auxmov--;
+				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
+
 		}
 		primero->elemento[0] = x;
 	}
 	tam++;
+	print();
 }
 
 template<class T, int N>
@@ -214,19 +225,31 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop(T& x) {
-	link index = primero;
-	while (index->siguiente != NULL) {
-		index = index->siguiente;
+	if (tam < 1) {
+		return false;
 	}
-	int i = 0;
-	T aux = index->elemento[i];
-	while (aux != NULL) {
-		aux = index->elemento[i];
-		i++;
+	else {
+		x = primero->elemento[0];
+		link punteroaux = primero;
+		int moviendo = 0;
+		int auxmov = 0;
+		while (moviendo < tam) {
+			if (auxmov == N - 1) {
+				link punteroanterior = punteroaux;
+				punteroaux = punteroaux->siguiente;
+				punteroanterior->elemento[auxmov] = punteroaux->elemento[0];
+				auxmov = 0;
+				moviendo++;
+			}
+			else {
+				punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
+				auxmov++;
+				moviendo++;
+			}
+		}
+		tam--;
+		return true;
 	}
-	x = index->elemento[i - 1];
-	index->elemento[i - 1] = NULL;
-	return x;
 }
 
 template<class T, int N>
