@@ -28,9 +28,9 @@ public:
 	void push_back(T x);  // Resuelto en clases - Listo
 	void insertar(T x, int pos);  // Pao
 	bool remove(int pos, T& x);	  // Esteban
-	bool pop(T& x);				  //Pao
+	bool pop(T& x);				  //Pao -- Esteban - Listo
 	bool pop_back(T& x);		  //Esteban - Listo
-	bool get(int pos, T& element);	//Esteban - Listo
+	bool get(int pos, T& element);	//Pao -- Esteban - Listo
 	bool get_front(T& element);		//Esteban - Listo
 	bool get_back(T& element);		//Cualquiera Esteban - Listo
 	~ListaB();						// Esteban - Listo
@@ -214,19 +214,31 @@ bool ListaB<T, N>::remove(int pos, T& x) {
 
 template<class T, int N>
 bool ListaB<T, N>::pop(T& x) {
-	link index = primero;
-	while (index->siguiente != NULL) {
-		index = index->siguiente;
+	if (tam < 1) {
+		return false;
 	}
-	int i = 0;
-	T aux = index->elemento[i];
-	while (aux != NULL) {
-		aux = index->elemento[i];
-		i++;
+	else {
+		x = primero->elemento[0];
+		link punteroaux = primero;
+		int moviendo = 0;
+		int auxmov = 0;
+		while (moviendo < tam) {
+			if (auxmov == N - 1) {
+				link punteroanterior = punteroaux;
+				punteroaux = punteroaux->siguiente;
+				punteroanterior->elemento[auxmov] = punteroaux->elemento[0];
+				auxmov = 0;
+				moviendo++;
+			}
+			else {
+				punteroaux->elemento[auxmov] = punteroaux->elemento[auxmov + 1];
+				auxmov++;
+				moviendo++;
+			}
+		}
+		tam--;
+		return true;
 	}
-	x = index->elemento[i - 1];
-	index->elemento[i - 1] = NULL;
-	return x;
 }
 
 template<class T, int N>

@@ -49,12 +49,12 @@ int main() {
 	lp.push_back(26);
 	lp.push_back(575);
 	lp.push_back(180);
-	lp.push_back(1);
-	lp.push_back(2);
-	lp.push_back(55);
-	lp.push_back(10);
-	lp.push_back(11);
-	lp.push_back(22);
+	//lp.push_back(1);
+	//lp.push_back(2);
+	//lp.push_back(55);
+	//lp.push_back(10);
+	//lp.push_back(11);
+	//lp.push_back(22);
 	//lp.push_back(553);
 	//lp.push_back(104);
 	//lp.push_back(15);
@@ -79,7 +79,7 @@ int main() {
 	// ************ Pruebas ***************\\
 	
 	int x = 0;
-	lp.get(10,x);
+	lp.pop(x);
 	//cout << lp.len() << endl;
 	cout <<"El valor obtenido del get fue "<< x << endl;
 	lp.print();
