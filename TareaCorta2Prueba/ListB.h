@@ -51,22 +51,11 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
+	cout << "-----------------------------------------" << endl;
 	if (tam==0) {
-		cout << "Caso 1" << endl;
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
-	//else if (tam == 1) {
-	//	cout << "Caso 2" << endl;
-	//	primero->elemento[1] = primero->elemento[0];
-	//	primero->elemento[0] = x;
-	//}
-	//else if (tam == 2) {
-	//	cout << "Caso 3" << endl;
-	//	primero->elemento[2] = primero->elemento[1];
-	//	primero->elemento[1] = primero->elemento[0];
-	//	primero->elemento[0] = x;
-	//}
 	else {
 		cout << "Caso 2" << endl;
 		T movidos = primero->elemento[0];
@@ -83,33 +72,43 @@ void ListaB<T, N>::push_front(T x) {
 			auxmov++;
 			//movidos = punteroaux->elemento[auxmov];
 		}
-		cout << "Soy auxmoc " << auxmov << endl;
+		//cout << "Soy auxmoc " << auxmov << endl;
 		while (moviendo > -1) {
-			//cout << "Soy auxmov = " << auxmov << endl;
+			cout << "Soy auxmov = " << auxmov << endl;
 			if (auxmov == N - 1) {
 				cout << "Caso 2a" << endl;
 				link punteroanterior = punteroaux;
 				punteroaux->siguiente = new Node();
 				punteroaux = punteroaux->siguiente;
 				punteroaux->elemento[0] = punteroanterior->elemento[auxmov];
+				punteroaux = punteroanterior;
 				auxmov--;
 				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
-			else if (auxmov == 0 && tam>N) {
-				cout << "Caso 2b" << endl;
-				while (punteroemergente != punteroaux ) {
+			else if (auxmov == 0 && tam>N-1) {
+				cout << "Caso 2b moviendo" <<moviendo << endl;
+				while (punteroemergente != punteroaux && moviendo>2*N) {
 					punteroemergente = punteroemergente->siguiente;
 				}
-				punteroemergente->elemento[N - 1] = punteroaux->elemento[auxmov];
+				punteroaux->elemento[auxmov] = punteroemergente->elemento[N - 1];
 				auxmov = N - 2;
 				punteroaux = punteroemergente;
 				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
 			else {
-				cout << "Caso 2c" << endl;
+				cout << "Caso 2c, mov "<< auxmov << endl;
 				punteroaux->elemento[auxmov + 1] = punteroaux->elemento[auxmov];
 				auxmov--;
 				moviendo--;
+				tam++;
+				print();
+				tam--;
 			}
 
 		}
