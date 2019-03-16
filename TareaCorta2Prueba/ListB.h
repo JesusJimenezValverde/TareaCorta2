@@ -24,10 +24,10 @@ class ListaB {
 public:
 	ListaB(string s);     // Esteban - Listo
 	int len();			  // Esteban - Listo
-	void push_front(T x); // Pao
+	void push_front(T x); // Pao -- Esteban - Listo
 	void push_back(T x);  // Resuelto en clases - Listo
 	void insertar(T x, int pos);  // Pao
-	bool remove(int pos, T& x);	  // Esteban
+	bool remove(int pos, T& x);	  // Esteban - Listo
 	bool pop(T& x);				  //Pao -- Esteban - Listo
 	bool pop_back(T& x);		  //Esteban - Listo
 	bool get(int pos, T& element);	//Pao -- Esteban - Listo
@@ -51,13 +51,11 @@ int ListaB<T, N>::len() {
 
 template<class T, int N>
 void ListaB<T, N>::push_front(T x) {
-	cout << "-----------------------------------------" << endl;
 	if (tam==0) {
 		primero = new Node();
 		primero->elemento[0] = x;
 	}
 	else {
-		cout << "Caso 2" << endl;
 		T movidos = primero->elemento[0];
 		link punteroaux = primero;
 		link punteroemergente = primero;
@@ -70,13 +68,9 @@ void ListaB<T, N>::push_front(T x) {
 		while (moviendo < tam-1) {
 			moviendo++;
 			auxmov++;
-			//movidos = punteroaux->elemento[auxmov];
 		}
-		//cout << "Soy auxmoc " << auxmov << endl;
 		while (moviendo > -1) {
-			cout << "Soy auxmov = " << auxmov << endl;
 			if (auxmov == N - 1) {
-				cout << "Caso 2a" << endl;
 				link punteroanterior = punteroaux;
 				punteroaux->siguiente = new Node();
 				punteroaux = punteroaux->siguiente;
@@ -84,43 +78,24 @@ void ListaB<T, N>::push_front(T x) {
 				punteroaux = punteroanterior;
 				auxmov--;
 				moviendo--;
-				tam++;
-				print();
-				tam--;
 			}
 			else if (auxmov == 0 && punteroaux!=primero) {
-				cout << "Caso 2b moviendo " <<moviendo << endl;
-				cout << punteroaux->elemento[0]<<"  ,  "<<punteroemergente->elemento[N-1];
-
-				//while (punteroemergente != punteroaux && moviendo>2*N) {
-				//	punteroemergente = punteroemergente->siguiente;
-				//}
 				punteroaux->elemento[auxmov+1] = punteroaux->elemento[auxmov];
 				punteroaux->elemento[auxmov] = punteroemergente->elemento[N - 1];
 				auxmov = N - 2;
 				punteroaux = punteroemergente;
 				moviendo--;
-				tam++;
-				print();
-				tam--;
 			}
 			else {
-				cout << "Caso 2c, mov "<< auxmov << endl;
 				punteroaux->elemento[auxmov + 1] = punteroaux->elemento[auxmov];
 				auxmov--;
 				moviendo--;
-				tam++;
-				print();
-				tam--;
 			}
 
 		}
 		primero->elemento[0] = x;
 	}
-	
 	tam++;
-	cout << "Resultado ";
-	print();
 }
 
 template<class T, int N>
@@ -144,7 +119,6 @@ void ListaB<T, N>::push_back(T x) {
 			p->lleno = tam % N == 0;
 		}
 	}
-	cout << "Tamanno es : " << tam << endl;
 }
 
 template<class T, int N>
@@ -283,7 +257,7 @@ bool ListaB<T, N>::pop_back(T& x) {
 		p->elemento[pos - 1] = NULL;
 		if (pos - 1 == 0) {
 			aux->siguiente = NULL;
-			delete p;
+			//delete p;
 		}
 		tam -= 1;
 		return true;
