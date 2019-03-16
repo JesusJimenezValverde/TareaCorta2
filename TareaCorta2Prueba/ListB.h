@@ -3,7 +3,7 @@
 #include <string>
 //using std::string;
 //using std::cout;
-
+a
 using namespace std;
 
 template <class T, int N = 10>
