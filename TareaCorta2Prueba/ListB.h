@@ -30,7 +30,7 @@ public:
 	bool remove(int pos, T& x);	  // Esteban
 	bool pop(T& x);				  //Pao
 	bool pop_back(T& x);		  //Esteban - Listo
-	bool get(int pos, T& element);	//Pao
+	bool get(int pos, T& element);	//Esteban - Listo
 	bool get_front(T& element);		//Esteban - Listo
 	bool get_back(T& element);		//Cualquiera Esteban - Listo
 	~ListaB();						// Esteban - Listo
