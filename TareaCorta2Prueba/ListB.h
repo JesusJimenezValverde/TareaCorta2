@@ -88,11 +88,12 @@ void ListaB<T, N>::push_front(T x) {
 				print();
 				tam--;
 			}
-			else if (auxmov == 0 && tam>N-1) {
-				cout << "Caso 2b moviendo" <<moviendo << endl;
-				while (punteroemergente != punteroaux && moviendo>2*N) {
-					punteroemergente = punteroemergente->siguiente;
-				}
+			else if (auxmov == 0 && punteroaux!=primero) {
+				cout << "Caso 2b moviendo " <<moviendo << endl;
+
+				//while (punteroemergente != punteroaux && moviendo>2*N) {
+				//	punteroemergente = punteroemergente->siguiente;
+				//}
 				punteroaux->elemento[auxmov] = punteroemergente->elemento[N - 1];
 				auxmov = N - 2;
 				punteroaux = punteroemergente;
@@ -114,7 +115,9 @@ void ListaB<T, N>::push_front(T x) {
 		}
 		primero->elemento[0] = x;
 	}
+	
 	tam++;
+	cout << "Resultado ";
 	print();
 }
 
