@@ -222,21 +222,32 @@ bool List<T>::get(int pos, T & element)
 template<class T>
 bool List<T>::get_front(T & element)
 {
-	element = primero->elemento;
-	return true;
+	if (tam > 0) {
+		element = primero->elemento;
+		return true;
+	}
+	else {
+		return false;
+	}
 	
 }
 
 template<class T>
 bool List<T>::get_back(T & element)
 {
-	link aux = primero;
-	while (aux) {
-		if (aux->siguiente == NULL)
-			element = aux->elemento;
-		aux = aux->siguiente;
+	if (tam > 0) {
+		link aux = primero;
+		while (aux) {
+			if (aux->siguiente == NULL)
+				element = aux->elemento;
+			aux = aux->siguiente;
+		}
+		return true;
 	}
-	return true;
+	else {
+		return false;
+	}
+
 }
 
 template<class T>
@@ -251,7 +262,7 @@ void List<T>::print() {
 			p = p->siguiente;
 		}
 	}
-	cout << "]";
+	cout << "]\n";
 }
 
 template<class T>
