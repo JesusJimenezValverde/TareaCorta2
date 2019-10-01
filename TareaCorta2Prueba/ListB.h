@@ -7,7 +7,7 @@ using namespace std;
 template <class T, int N = 10>
 class ListaB {
 	struct Node {
-		bool lleno; // Indica si el nodo est· lleno
+		bool lleno; // Indica si el nodo est√° lleno
 		T elemento[N]; // Cada nodo almacena N elementos
 
 		struct Node * siguiente; // Puntero al siguiente nodo
@@ -24,15 +24,15 @@ class ListaB {
 public:
 	ListaB(string s);     // Esteban - Listo
 	int len();			  // Esteban - Listo
-	void push_front(T x); // Pao -- Esteban - Listo
+	void push_front(T x); // Esteban - Listo
 	void push_back(T x);  // Resuelto en clases - Listo
-	void insertar(T x, int pos);  // Pao
+	void insertar(T x, int pos);  // Falta
 	bool remove(int pos, T& x);	  // Esteban - Listo
-	bool pop(T& x);				  //Pao -- Esteban - Listo
+	bool pop(T& x);				  // Esteban - Listo
 	bool pop_back(T& x);		  //Esteban - Listo
-	bool get(int pos, T& element);	//Pao -- Esteban - Listo
+	bool get(int pos, T& element);	// Esteban - Listo
 	bool get_front(T& element);		//Esteban - Listo
-	bool get_back(T& element);		//Cualquiera Esteban - Listo
+	bool get_back(T& element);		// Esteban - Listo
 	~ListaB();						// Esteban - Listo
 	void print();					//Esteban - Listo
 };
